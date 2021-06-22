@@ -69,6 +69,12 @@ function Draggablebox(props){
               
                 nboxesList[nboxesList.length-1].position.x=nboxesList[nboxesList.length-1].position.x-(x2-x1);
                 nboxesList[nboxesList.length-1].position.y=nboxesList[nboxesList.length-1].position.y-(y2-y1);
+                if(nboxesList[nboxesList.length-1].position.x<0){
+                    nboxesList[nboxesList.length-1].position.x=0;
+                }
+                if(nboxesList[nboxesList.length-1].position.y<0){
+                    nboxesList[nboxesList.length-1].position.y=0;
+                }
                 console.log(nboxesList[nboxesList.length-1]);
                 setParentFlag(parentFlag+1);
               setBoxesList(nboxesList);
@@ -103,13 +109,13 @@ function Draggablebox(props){
     
     return (
         
-        <div>
+        <div  style={{height:"100vh",overflow:"auto"}}>
         <h1>Draggable</h1>
         <p>
         <button onClick={(e)=>{addBox(0)}}>add a box</button>
         </p>
-        <div className="box" style={{height: '520px', width: '100%', position: 'relative', overflow: 'scroll', padding: '0'}}>
-        <div style={{height: '520px', width: '100%'}}>
+        {/* <div className="box" style={{height: '520px', width: '100%', position: 'relative', overflow: 'auto', padding: '0'}}>
+        <div style={{height: '520px', width: '100%',overflow: 'auto'}}> */}
             
                   {
 
@@ -117,8 +123,8 @@ function Draggablebox(props){
 
 
                   }
-        </div>
-        </div>
+        {/* </div>
+        </div> */}
         </div>
     );
 }
